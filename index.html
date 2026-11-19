@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>再待一会儿 · 皇后镇湖边小屋</title>
+<meta name="description" content="坐在皇后镇瓦卡蒂普湖边的小木屋里，喝口咖啡，放空一会儿。">
+<meta name="theme-color" content="#FFF5E6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-weather="sunset">
+
+<!-- 图标（对应 Figma：Icons） -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4.5 9.5h3l4.5-3.8v12.6l-4.5-3.8h-3z"/><path class="on" d="M15.2 9.3a3.8 3.8 0 0 1 0 5.4M17.8 6.9a7.2 7.2 0 0 1 0 10.2"/><path class="off" d="M15.5 9.8l4.4 4.4M19.9 9.8l-4.4 4.4"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4.5 9V4.5H9M15 4.5h4.5V9M19.5 15v4.5H15M9 19.5H4.5V15"/></symbol>
+  <symbol id="i-collapse" viewBox="0 0 24 24"><path d="M9 4.5V9H4.5M19.5 9H15V4.5M15 19.5V15h4.5M4.5 15H9v4.5"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M9.6 9.6a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.6"/><circle class="dot" cx="12" cy="16.9" r=".6"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15.5V5M7.8 9.2 12 5l4.2 4.2M5 15.5v2.2c0 .7.6 1.3 1.3 1.3h11.4c.7 0 1.3-.6 1.3-1.3v-2.2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 7V5h4v2M7 7l.8 11.2c.1.7.6 1.3 1.3 1.3h5.8c.7 0 1.2-.6 1.3-1.3L17 7"/></symbol>
+</svg>
+
+<!-- 场景：你的插画 + 天气 / 灯光 / 热气 / 雨 的叠加层（由 app.js 按电脑或手机构图生成） -->
+<div id="backdrop" aria-hidden="true"></div>
+<main id="scene" aria-label="皇后镇湖边小屋：窗外是瓦卡蒂普湖和雪山，桌上有一杯热咖啡">
+  <div id="stage">
+    <svg id="sBase" class="layer" aria-hidden="true"></svg>
+    <svg id="sFx" class="layer" aria-hidden="true"></svg>
+    <svg id="sHot" class="layer"></svg>
+  </div>
+  <div id="flashOverlay" aria-hidden="true"></div>
+</main>
+
+<!-- 小屋标牌 -->
+<header class="brand chrome">
+  <p class="brand-name">再待一会儿</p>
+  <p class="brand-sub">QUEENSTOWN</p>
+</header>
+
+<!-- 帮助 -->
+<button id="helpBtn" class="icon-btn chrome corner" aria-haspopup="dialog" aria-label="小屋使用提示" title="小屋使用提示"><svg><use href="#i-help"/></svg></button>
+
+<!-- 退出沉浸 -->
+<button id="exitImmersive" class="btn secondary corner" hidden><svg class="ico"><use href="#i-collapse"/></svg>退出沉浸</button>
+
+<!-- 底部工具栏 -->
+<nav class="toolbar chrome" aria-label="场景控制">
+  <div class="seg desktop-only" role="group" aria-label="天气与时间">
+    <button class="wbtn" data-w="sunny" aria-pressed="false">晴天</button>
+    <button class="wbtn" data-w="sunset" aria-pressed="true">日落</button>
+    <button class="wbtn" data-w="rain" aria-pressed="false">雨天</button>
+  </div>
+  <button id="weatherPill" class="weather-pill mobile-only" aria-haspopup="dialog"><span id="weatherPillText">日落</span><svg><use href="#i-chevron"/></svg></button>
+  <button id="soundBtn" class="icon-btn" aria-haspopup="dialog" aria-label="声音设置" title="声音"><svg><use href="#i-sound"/></svg></button>
+  <button id="immersiveBtn" class="icon-btn" aria-label="沉浸模式：隐藏所有控件" title="沉浸模式"><svg><use href="#i-expand"/></svg></button>
+</nav>
+
+<!-- 小屋寄语 -->
+<p class="caption chrome">窗外的湖不赶时间，你也不用。</p>
+
+<!-- 咖啡反馈 -->
+<div id="bubble" class="bubble" role="status" aria-live="polite"></div>
+
+<div id="tooltip" aria-hidden="true"></div>
+<div id="labels" aria-hidden="true"></div>
+<div id="coach" class="coach" hidden>
+  <span>轻点画面里的小物件，或者点这些标签</span>
+  <button id="coachClose" type="button" class="btn secondary small">知道了</button>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- ===== 手账 ===== -->
+<dialog id="journalDlg" class="panel" aria-labelledby="jTitle">
+  <div class="panel-head">
+    <h2 id="jTitle"><span class="desktop-only">今天，想留下一句话吗？</span><span class="mobile-only">留下一句话</span></h2>
+    <button class="icon-btn" data-close aria-label="关闭手账"><svg><use href="#i-close"/></svg></button>
+  </div>
+  <p class="panel-sub">给今天留一个小小的位置。</p>
+  <div class="lined">
+    <textarea id="moodText" maxlength="2000" aria-label="今天想记住的事" placeholder="写一点今天想记住的事……"></textarea>
+  </div>
+  <div class="panel-foot">
+    <p class="note" id="jStatus" aria-live="polite">仅保存在当前浏览器</p>
+    <button id="jSave" class="btn primary">收好这一页</button>
+  </div>
+</dialog>
+
+<!-- ===== 相册 ===== -->
+<dialog id="albumDlg" class="panel wide" aria-labelledby="aTitle">
+  <div class="panel-head">
+    <h2 id="aTitle"><span class="desktop-only">把这一刻，留在这里</span><span class="mobile-only">我的旅行相册</span></h2>
+    <button class="icon-btn" data-close aria-label="关闭相册"><svg><use href="#i-close"/></svg></button>
+  </div>
+  <p class="panel-sub desktop-only">属于你的旅行相册</p>
+
+  <div class="album-body" id="aBody">
+    <!-- 空白 -->
+    <div class="album-empty" id="aEmpty">
+      <svg class="up-ico" aria-hidden="true"><use href="#i-upload"/></svg>
+      <p class="empty-title">相册还是空的</p>
+      <p class="empty-sub">放几张旅行照片，以后随时回来看看。</p>
+      <label class="btn primary" for="fileInput" tabindex="0" role="button">放几张照片</label>
+    </div>
+    <!-- 网格 -->
+    <div class="album-grid" id="aGrid" role="list" hidden></div>
+    <!-- 单张 -->
+    <div class="album-single" id="aSingle" hidden>
+      <button class="icon-btn nav" id="aPrev" aria-label="上一张"><svg><use href="#i-left"/></svg></button>
+      <figure class="polaroid big" id="aBig">
+        <img id="aImg" alt="">
+        <figcaption id="aCap"></figcaption>
+      </figure>
+      <button class="icon-btn nav" id="aNext" aria-label="下一张"><svg><use href="#i-right"/></svg></button>
+    </div>
+  </div>
+
+  <div class="panel-foot">
+    <p class="note" id="aNote">照片仅保存在当前浏览器</p>
+    <div class="foot-actions" id="aActions">
+      <button id="aBack" class="btn secondary" hidden>返回全部</button>
+      <button id="aDelete" class="btn secondary" hidden>删除这张</button>
+      <button id="aCancelDel" class="btn secondary" hidden>取消</button>
+      <button id="aDoDel" class="btn danger" hidden>确定删除</button>
+      <label id="aAdd" class="btn secondary" for="fileInput" tabindex="0" role="button" hidden>继续添加</label>
+    </div>
+  </div>
+  <input id="fileInput" type="file" accept="image/*" multiple hidden>
+</dialog>
+
+<!-- ===== 声音 ===== -->
+<dialog id="soundDlg" class="panel narrow" aria-labelledby="sTitle">
+  <div class="panel-head">
+    <h2 id="sTitle">听一会儿</h2>
+    <button class="icon-btn" data-close aria-label="关闭声音设置"><svg><use href="#i-close"/></svg></button>
+  </div>
+  <p class="item-title">湖水与微风</p>
+  <p class="item-desc">声音默认关闭，由你决定什么时候开启。</p>
+  <label class="range"><span>音量</span><input id="volLake" type="range" min="0" max="100" value="60"></label>
+  <label class="range"><span>雨声</span><input id="volRain" type="range" min="0" max="100" value="0"></label>
+  <p class="note small">雨声会在雨天自动响起，也可以自己调。</p>
+  <div class="panel-actions"><button id="soundToggle" class="btn primary">开始聆听</button></div>
+</dialog>
+
+<!-- ===== 使用提示 ===== -->
+<dialog id="helpDlg" class="panel" aria-labelledby="hTitle">
+  <div class="panel-head">
+    <h2 id="hTitle"><span class="desktop-only">小屋里，有这些小事</span><span class="mobile-only">小屋使用提示</span></h2>
+    <button class="icon-btn" data-close aria-label="关闭使用提示"><svg><use href="#i-close"/></svg></button>
+  </div>
+  <ul class="help-list">
+    <li><p class="item-title">咖啡</p><p class="item-desc">喝一口，慢慢来。</p></li>
+    <li><p class="item-title">手账</p><p class="item-desc">记一句话，收好今天的心情。</p></li>
+    <li><p class="item-title">相机</p><p class="item-desc">翻看旅行照片，随时回看。</p></li>
+    <li><p class="item-title">台灯与窗外</p><p class="item-desc">开一盏灯，换一种天气。</p></li>
+  </ul>
+  <div class="switch-row">
+    <span>在画面上显示物品提示</span>
+    <button id="tagSwitch" class="switch" role="switch" aria-checked="false" aria-label="在画面上显示物品提示"><span></span></button>
+  </div>
+  <p class="note small">手账和照片只保存在这台设备的浏览器里，不会上传。键盘：Tab 选择物品，Enter 互动，1 / 2 / 3 换天气，Esc 关闭。</p>
+  <p class="note">这里没有任务，想坐多久都可以。</p>
+</dialog>
+
+<!-- ===== 天气（手机） ===== -->
+<dialog id="weatherDlg" class="panel narrow" aria-labelledby="wTitle">
+  <div class="panel-head">
+    <h2 id="wTitle">窗外，想要什么天气？</h2>
+    <button class="icon-btn" data-close aria-label="关闭天气选择"><svg><use href="#i-close"/></svg></button>
+  </div>
+  <div class="weather-list">
+    <button class="btn secondary block wopt" data-w="sunny" aria-pressed="false">晴天</button>
+    <button class="btn secondary block wopt" data-w="sunset" aria-pressed="true">日落</button>
+    <button class="btn secondary block wopt" data-w="rain" aria-pressed="false">雨天</button>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
