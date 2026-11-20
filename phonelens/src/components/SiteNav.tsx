@@ -2,24 +2,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const LINKS = [
-  { href: "/", label: "对比" },
-  { href: "/import", label: "导入评论" },
-  { href: "/data", label: "数据说明" },
-];
-
-export function SiteNav() {
+/** 导航只保留对比入口和一处演示标识；导入与数据说明在页脚 */
+export function SiteNav({ demo }: { demo: boolean }) {
   const path = usePathname();
   return (
-    <nav className="site-nav" aria-label="主导航">
-      {LINKS.map((l) => {
-        const active = l.href === "/" ? path === "/" || path.startsWith("/compare") : path.startsWith(l.href);
-        return (
-          <Link key={l.href} href={l.href} aria-current={active ? "page" : undefined}>
-            {l.label}
-          </Link>
-        );
-      })}
+    <nav className="nav-links" aria-label="主导航">
+      {demo && (
+        <Link className="demo-pill" href="/data#demo" title="了解演示数据">
+          演示模式 · 数据为虚构示例
+        </Link>
+      )}
+      <Link className="hide-sm" href="/" aria-current={path === "/" || path.startsWith("/compare") ? "page" : undefined}>
+        对比
+      </Link>
+      <Link className="hide-sm" href="/data" aria-current={path.startsWith("/data") ? "page" : undefined}>
+        数据与方法
+      </Link>
     </nav>
   );
 }

@@ -11,7 +11,7 @@ export const CompareInputSchema = z.object({
   a: z.string().min(1).max(64).regex(/^[a-z0-9-]+$/),
   b: z.string().min(1).max(64).regex(/^[a-z0-9-]+$/),
   budget: z.number().int().min(500).max(50000).nullable(),
-  prefs: z.array(z.enum(PREF_VALUES)).min(1).max(2).refine((p) => new Set(p).size === p.length, "偏好不能重复"),
+  prefs: z.array(z.enum(PREF_VALUES)).max(2).refine((p) => new Set(p).size === p.length, "偏好不能重复"),
   device: z.enum(["iphone", "android"]).nullable(),
   eco: z.array(z.enum(ECO_VALUES)).max(6),
   window: z.enum(["90d", "all"]),
@@ -54,4 +54,4 @@ export function toSearch(i: { a: string; b: string; budget: number | null; prefs
   return q.toString();
 }
 
-export const EXAMPLE = { a: "demo-alpha", b: "demo-beta", budget: 6000, prefs: ["handling", "battery"], device: "android", eco: [] as string[] };
+export const EXAMPLE = { a: "demo-alpha", b: "demo-beta", budget: 6000, prefs: ["handling", "battery"], device: null as string | null, eco: [] as string[] };

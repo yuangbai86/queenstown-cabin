@@ -6,7 +6,7 @@ import { IconExternal } from "@/components/Icons";
 import { MIN_SAMPLE, WINDOW_DAYS } from "@/lib/stats";
 import { PRICE_GAP_THRESHOLD } from "@/lib/rules";
 
-export const metadata: Metadata = { title: "数据说明 · PhoneLens" };
+export const metadata: Metadata = { title: "数据与方法 · PhoneLens" };
 
 const VERIFY: Record<string, string> = { fixture: "演示夹具", unverified: "尚未核验", human_verified: "已人工核验" };
 
@@ -15,17 +15,36 @@ export default function DataPage() {
   return (
     <div className="stack">
       <div>
-        <h1 className="page-title enter">数据说明</h1>
+        <h1 className="page-title enter">数据与方法</h1>
         <p className="page-lead enter" style={{ ["--i" as string]: 1 }}>
           这里列出当前收录的机型、来源登记和比较规则。数据版本 {dataset.meta.data_version}，整理日期 {dataset.meta.as_of}。
         </p>
       </div>
 
-      <p className="notice notice-warn enter" style={{ ["--i" as string]: 2 }}>
-        {dataset.meta.notes}
-      </p>
+      <section id="demo" className="panel enter" style={{ ["--i" as string]: 2 }} aria-labelledby="demo-h">
+        <h2 id="demo-h" style={{ fontSize: 19, marginBottom: 8 }}>
+          演示模式
+        </h2>
+        <p className="muted">
+          Alpha、Beta、Gamma、Delta、Epsilon Pro 是虚构的演示机型，参数、价格与 84 条评论都由开发者编写，只用于展示比较、统计和证据流程，不代表任何真实产品。
+          {" "}{dataset.meta.notes}
+        </p>
+      </section>
 
-      <section className="card enter" style={{ ["--i" as string]: 3, padding: 18 }} aria-labelledby="cat-h">
+      <section id="method" className="panel" aria-labelledby="method-h">
+        <h2 id="method-h" style={{ fontSize: 19, marginBottom: 8 }}>
+          结论怎样得出
+        </h2>
+        <ul className="note-list" style={{ marginTop: 0, fontSize: 14.5 }}>
+          <li>当前为基础模式：结论根据已记录的参数和样本统计按固定规则得出，没有调用模型。</li>
+          <li>只有首要需求由已记录参数给出较明确差异、其次需求不反对时，才显示“更值得考虑”；只有评论倾向时最多显示“各有取舍”。</li>
+          <li>没有选择需求时，只列出可核验的客观差异，不判断哪款更适合你。</li>
+          <li>启用模型后，模型只改写解释；每个数字都要对应到具体机型、字段和单位，引用编号必须存在，不合格的句子会被删除。</li>
+          <li>每个结论旁的“依据”和“来源”可以打开原始参数、价格、统计和评论。</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="cat-h">
         <h2 id="cat-h" style={{ fontSize: 18, marginBottom: 10 }}>
           机型目录
         </h2>
@@ -68,7 +87,7 @@ export default function DataPage() {
         </div>
       </section>
 
-      <section className="card" style={{ padding: 18 }} aria-labelledby="src-h">
+      <section aria-labelledby="src-h">
         <h2 id="src-h" style={{ fontSize: 18, marginBottom: 10 }}>
           来源登记
         </h2>
@@ -111,7 +130,7 @@ export default function DataPage() {
         </div>
       </section>
 
-      <section className="card" style={{ padding: 18 }} aria-labelledby="rule-h">
+      <section aria-labelledby="rule-h">
         <h2 id="rule-h" style={{ fontSize: 18, marginBottom: 10 }}>
           比较规则
         </h2>

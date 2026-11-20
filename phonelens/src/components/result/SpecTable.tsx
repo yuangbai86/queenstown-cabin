@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import type { Comparison, SpecRow } from "@/lib/recommend/compare";
 import { EvidenceButton } from "../EvidenceDrawer";
-import { SideTag } from "../Badges";
+import { shortName } from "@/lib/recommend/brief";
 
 /**
  * 参数对比。桌面三列并排；手机端按参数逐项展示两款，避免横向滚动。
@@ -38,38 +38,29 @@ export function SpecTable({ c }: { c: Comparison }) {
 
   return (
     <>
-      <div className="section-title">
-        <h2>
-          核心参数 <span className="badge badge-fact">事实</span>
-        </h2>
-        <div className="spec-toolbar">
-          <button ref={toggleRef} type="button" role="switch" aria-checked={onlyDiff} className="switch" onClick={toggle} style={{ background: "none", border: 0, padding: 0 }}>
-            <span className="track" aria-hidden="true" />
-            只看差异（{diffCount} 项）
-          </button>
-        </div>
+      <div className="spec-toolbar">
+        <button ref={toggleRef} type="button" role="switch" aria-checked={onlyDiff} className="switch" onClick={toggle}>
+          <span className="track" aria-hidden="true" />
+          只看差异（{diffCount} 项）
+        </button>
       </div>
       {noSpecs && (
-        <p className="notice notice-warn" style={{ marginBottom: 12 }}>
-          {noSpecs.toUpperCase()} 的参数尚未核验，相关行显示“尚未核验”，不会用推测值补齐，涉及硬件规格的判断会受限。
+        <p className="notice notice-warn" style={{ margin: "4px 0 8px" }}>
+          {shortName(c, noSpecs)} 的参数尚未核验，相关行显示“尚未核验”，不会用推测值补齐。
         </p>
       )}
-      <div className="card spec-table">
+      <div className="spec-table">
         <div className="spec-head" aria-hidden="true">
           <span>参数</span>
-          <span className="col-name">
-            <SideTag side="a" /> {c.a.name}
-          </span>
-          <span className="col-name">
-            <SideTag side="b" /> {c.b.name}
-          </span>
+          <span className="col-name">{shortName(c, "a")}</span>
+          <span className="col-name">{shortName(c, "b")}</span>
         </div>
         <div role="table" aria-label={`${c.a.name} 与 ${c.b.name} 的参数对比`}>
           <div role="rowgroup" className="sr-only">
             <div role="row">
               <span role="columnheader">参数</span>
-              <span role="columnheader">A {c.a.name}</span>
-              <span role="columnheader">B {c.b.name}</span>
+              <span role="columnheader">{c.a.name}</span>
+              <span role="columnheader">{c.b.name}</span>
             </div>
           </div>
           {groups.map((g) => {
@@ -89,15 +80,14 @@ export function SpecTable({ c }: { c: Comparison }) {
                         <div className="row-inner">
                           <span className="label" role="rowheader">
                             {r.label}
-                            {r.differs && !r.a.missing && !r.b.missing && <span className="diff-mark">不同</span>}
+                            <EvidenceButton ids={[r.a.evidence, r.b.evidence]} title={r.label} label="来源" />
                           </span>
                           {(["a", "b"] as const).map((s) => (
                             <span key={s} role="cell" className={`spec-cell${r[s].missing ? " missing" : ""}`}>
                               <span className="side-mobile">
-                                <SideTag side={s} /> {c[s].model}
+                                {shortName(c, s)}
                               </span>
                               <span className="val">{r[s].text}</span>
-                              <EvidenceButton ids={[r[s].evidence]} title={`${c[s].name} · ${r.label}`} label="来源" />
                             </span>
                           ))}
                           {r.caution && r.differs && <span className="spec-caution">注意：{r.caution}</span>}

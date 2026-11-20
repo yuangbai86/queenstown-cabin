@@ -2,7 +2,7 @@
 import type { Comparison } from "@/lib/recommend/compare";
 import { EXCLUSION_LABEL } from "@/lib/labels";
 import type { ExclusionReason } from "@/lib/types";
-import { SideTag, DataKindBadge } from "../Badges";
+import { shortName } from "@/lib/recommend/brief";
 
 export function SampleNotes({ c, sourceNames }: { c: Comparison; sourceNames: Record<string, string> }) {
   return (
@@ -11,10 +11,8 @@ export function SampleNotes({ c, sourceNames }: { c: Comparison; sourceNames: Re
         const st = c.stats[s];
         const ex = Object.entries(st.excluded) as [ExclusionReason, number][];
         return (
-          <article key={s} className="card sample-card">
-            <h3>
-              <SideTag side={s} /> {c[s].name} <DataKindBadge kind={c[s].data_kind} />
-            </h3>
+          <article key={s} className="sample-card">
+            <h4>{shortName(c, s)} 的样本</h4>
             <dl className="kv">
               <dt>已收录</dt>
               <dd>{st.n_total} 条</dd>

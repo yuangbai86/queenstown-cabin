@@ -1,5 +1,4 @@
-import type { DataKind, SaleStatus } from "@/lib/types";
-import { SALE_STATUS_LABEL } from "@/lib/labels";
+import type { DataKind } from "@/lib/types";
 import { IconFlask } from "./Icons";
 
 export function DataKindBadge({ kind }: { kind: DataKind }) {
@@ -13,14 +12,7 @@ export function DataKindBadge({ kind }: { kind: DataKind }) {
   return <span className="badge badge-outline">真实机型</span>;
 }
 
-export function SaleBadge({ status }: { status: SaleStatus }) {
-  if (status === "demo") return null;
-  return <span className="badge">{SALE_STATUS_LABEL[status]}</span>;
-}
 
-export function SideTag({ side }: { side: "a" | "b" }) {
-  return <span className={`side-tag ${side}`}>{side.toUpperCase()}</span>;
-}
 
 /** 内容类型标签：事实 / 评论反馈 / 推荐 */
 export function KindTag({ kind }: { kind: "fact" | "review" | "rec" }) {

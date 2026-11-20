@@ -27,6 +27,8 @@ export interface Verdict {
 
 export interface Recommendation {
   status: RecStatus;
+  /** 用户没有选择偏好：只列客观差异，不生成个性化胜者 */
+  objective: boolean;
   lean: Side | null;
   summary: Claim[]; // 三至五句
   reasons: Claim[];
@@ -354,6 +356,7 @@ export function recommend(input: EngineInput): Recommendation {
     const who = missingAll.map((s) => `${tag(s)}（${names[s]}）`).join("、");
     return {
       status: "insufficient",
+      objective: false,
       lean: null,
       summary: [
         { text: `${who}目前没有已核验的参数，也没有已收录的评论，无法给出比较建议。`, evidence: [] },
@@ -364,6 +367,25 @@ export function recommend(input: EngineInput): Recommendation {
       questions: [],
       gaps: [`${who} 的参数与评论尚未收录`],
       verdicts,
+      otherVerdicts,
+    };
+  }
+
+  if (prefs.length === 0) {
+    for (const s of ["a", "b"] as Side[]) {
+      if (!input.hasSpecs[s]) gaps.push(`${tag(s)} 的参数尚未核验`);
+      if (!input.hasReviews[s]) gaps.push(`${tag(s)} 没有已收录的评论样本`);
+    }
+    return {
+      status: "tradeoff",
+      objective: true,
+      lean: null,
+      summary: [{ text: "你没有选择在意的方面，这里不判断哪款更适合你，只列出可核验的差异。", evidence: [] }],
+      reasons: [],
+      tradeoffs: [],
+      questions: [],
+      gaps,
+      verdicts: [],
       otherVerdicts,
     };
   }
@@ -460,5 +482,5 @@ export function recommend(input: EngineInput): Recommendation {
   if (tradeoffs[0]) summary.push(tradeoffs[0]);
   if (gaps[0] && summary.length < 5) summary.push({ text: `证据缺口：${gaps[0]}。`, evidence: [] });
 
-  return { status, lean, summary: summary.slice(0, 5), reasons, tradeoffs, questions, gaps, verdicts, otherVerdicts };
+  return { status, objective: false, lean, summary: summary.slice(0, 5), reasons, tradeoffs, questions, gaps, verdicts, otherVerdicts };
 }

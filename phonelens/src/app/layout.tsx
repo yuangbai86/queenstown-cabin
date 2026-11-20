@@ -6,8 +6,8 @@ import { ToastProvider } from "@/components/Toast";
 import { dataset } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "PhoneLens 手机对比助手",
-  description: "结合你的预算和使用偏好，用可核对的参数与评论证据，解释两款手机的差异与取舍。",
+  title: "PhoneLens · 两款手机，怎么选",
+  description: "选好两款机型，看清与你有关的差异和取舍。每个判断都能查到参数与评论来源。",
 };
 
 export const viewport: Viewport = {
@@ -15,6 +15,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: "#ffffff",
 };
+
+const DEMO = dataset.phones.some((p) => p.data_kind === "demo");
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -24,27 +26,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           跳到主要内容
         </a>
         <ToastProvider>
-          <header className="site-header">
-            <div className="inner">
-              <Link className="brand" href="/">
-                <span className="brand-mark" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round">
-                    <circle cx="10.5" cy="10.5" r="6" />
-                    <path d="M15 15l5 5" />
-                  </svg>
-                </span>
+          <header className="nav">
+            <div className="nav-inner">
+              <Link className="wordmark" href="/">
                 PhoneLens
               </Link>
-              <SiteNav />
+              <SiteNav demo={DEMO} />
             </div>
           </header>
           <main id="main" tabIndex={-1}>
-            {children}
+            <div className="wrap">{children}</div>
           </main>
-          <footer className="site-footer">
-            <div className="inner">
-              <span>数据版本 {dataset.meta.data_version} · 整理日期 {dataset.meta.as_of}</span>
-              <span>标有“演示数据”的机型、参数与评论为开发者编写的虚构内容，不代表任何真实产品。</span>
+          <footer className="footer">
+            <div className="footer-inner">
+              <nav className="footer-links" aria-label="更多">
+                <Link href="/import">导入自己的评论</Link>
+                <Link href="/data">数据与方法</Link>
+                <Link href="/data#demo">演示数据说明</Link>
+              </nav>
+              <p>
+                数据版本 {dataset.meta.data_version} · 整理于 {dataset.meta.as_of}
+                {DEMO ? " · 演示机型的参数、价格与评论均为虚构示例，不代表任何真实产品。" : ""}
+              </p>
             </div>
           </footer>
         </ToastProvider>

@@ -5,8 +5,8 @@ import type { Dimension, Preference, SampleWindow } from "@/lib/types";
 import { DIMENSIONS } from "@/lib/types";
 import { DIMENSION_LABEL, DIMENSION_SCOPE, SENTIMENT_LABEL, SENTIMENT_SYMBOL } from "@/lib/labels";
 import { EvidenceButton } from "../EvidenceDrawer";
-import { SideTag } from "../Badges";
-import { IconAlert, IconFlask } from "../Icons";
+import { shortName } from "@/lib/recommend/brief";
+import { IconAlert } from "../Icons";
 import { Tip } from "../Tip";
 
 const PREF_DIM: Record<Preference, Dimension[]> = {
@@ -69,11 +69,11 @@ export function ReviewDims({ c, onWindow, updating }: Props) {
 
   return (
     <>
-      <div className="section-title">
-        <h2>
-          口碑维度 <span className="badge badge-review">评论反馈</span>
-          <Tip text="每条评论可以同时属于多个维度，因此各维度数量相加可能超过分母。分母是当前筛选下已完成分析且通过校验的有效评论。" label="统计口径说明" />
-        </h2>
+      <div className="review-toolbar">
+        <span className="small muted" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          样本反馈，分母为已分析的有效评论
+          <Tip text="每条评论可以同时属于多个维度，因此各维度数量相加可能超过分母。待分析、待复核的评论不进入分母。" label="统计口径说明" />
+        </span>
         <div className="window-switch" role="group" aria-label="样本时间范围">
           <button type="button" aria-pressed={c.window === "90d"} onClick={() => onWindow("90d")} disabled={updating}>
             最近九十天
@@ -84,11 +84,6 @@ export function ReviewDims({ c, onWindow, updating }: Props) {
         </div>
       </div>
 
-      {c.demo && (
-        <p className="notice notice-demo" style={{ marginBottom: 12 }}>
-          <IconFlask className="icon" /> 这里的评论是开发者编写的演示样本，只用于展示统计与证据流程，不代表任何真实机型的口碑。
-        </p>
-      )}
       {!c.comparability.comparable && anyReviews && (
         <p className="notice notice-warn" style={{ marginBottom: 12 }}>
           <IconAlert className="icon" /> 样本口径不同：{c.comparability.reasons.join("；")}。可以分别查看，但不据此比较两款优劣。
@@ -128,7 +123,7 @@ export function ReviewDims({ c, onWindow, updating }: Props) {
         ))}
       </div>
 
-      <div id="dim-panel" role="tabpanel" aria-labelledby={`tab-${dim}`} className={`card dim-panel${updating ? " is-updating" : ""}`} style={{ position: "relative" }}>
+      <div id="dim-panel" role="tabpanel" aria-labelledby={`tab-${dim}`} className={`dim-panel${updating ? " is-updating" : ""}`} style={{ position: "relative" }}>
         <div className="update-veil" aria-hidden={!updating}>
           <span className="label">
             <span className="spinner" aria-hidden="true" /> 正在按新的样本范围重新统计
@@ -145,9 +140,7 @@ export function ReviewDims({ c, onWindow, updating }: Props) {
               const statId = `stat:${c[s].id}:${dim}:${c.window}`;
               return (
                 <section key={s} className="dim-side" aria-label={`${c[s].name} 的${DIMENSION_LABEL[dim]}反馈`}>
-                  <h3>
-                    <SideTag side={s} /> {c[s].name}
-                  </h3>
+                  <h4>{shortName(c, s)}</h4>
                   {st.n === 0 ? (
                     <p className="dim-empty">
                       {st.n_total === 0

@@ -35,26 +35,34 @@ export function pickPrice(prices: PriceRecord[], phone: PhoneRecord, userPrice?:
   return same[0] ?? null;
 }
 
+/** 页面上的短名称：演示机型用型号，真实机型在型号只有数字时补上品牌 */
+export function phoneShortName(p: PhoneRecord): string {
+  if (p.data_kind === "demo") return p.model;
+  return /^[\d\s]+$/.test(p.model) ? `${p.brand} ${p.model}` : p.model;
+}
+
 export function fairnessWarnings(a: PhoneRecord, b: PhoneRecord, pa: PriceRecord | null, pb: PriceRecord | null): RuleWarning[] {
   const w: RuleWarning[] = [];
+  const A = phoneShortName(a);
+  const B = phoneShortName(b);
   if (a.storage !== b.storage) {
     w.push({
       code: "storage_mismatch",
-      text: `两款存储容量不同（A ${a.storage}，B ${b.storage}），价格不能直接比较，不判断谁更划算。`,
+      text: `两款存储容量不同（${A} ${a.storage}，${B} ${b.storage}），价格不能直接比较，不判断谁更划算。`,
       evidence: [],
     });
   }
   if (!pa || !pb) {
     w.push({
       code: "price_missing",
-      text: `${!pa && !pb ? "两款" : !pa ? "A" : "B"}缺少价格记录，不生成价格优势结论。`,
+      text: `${!pa && !pb ? "两款都" : !pa ? `${A} ` : `${B} `}缺少价格记录，不比较价格。`,
       evidence: [pa?.id, pb?.id].filter(Boolean) as string[],
     });
   } else {
     if (pa.price_type !== pb.price_type) {
       w.push({
         code: "price_type_mismatch",
-        text: `价格口径不同（A 为${PRICE_TYPE_LABEL[pa.price_type]}，B 为${PRICE_TYPE_LABEL[pb.price_type]}），只展示记录，不比较谁更便宜。`,
+        text: `价格口径不同（${A} 为${PRICE_TYPE_LABEL[pa.price_type]}，${B} 为${PRICE_TYPE_LABEL[pb.price_type]}），不比较谁更便宜。`,
         evidence: [pa.id, pb.id],
       });
     }
@@ -66,7 +74,7 @@ export function fairnessWarnings(a: PhoneRecord, b: PhoneRecord, pa: PriceRecord
     if (low > 0 && gap / low > PRICE_GAP_THRESHOLD) {
       w.push({
         code: "price_gap",
-        text: `已知价格相差 ${gap} 元，超过较低价的 ${Math.round(PRICE_GAP_THRESHOLD * 100)}%，注意定位与配置差异。`,
+        text: `两款价格相差 ${gap} 元，超过较低价的 ${Math.round(PRICE_GAP_THRESHOLD * 100)}%，注意定位与配置差异。`,
         evidence: [pa.id, pb.id],
       });
     }
