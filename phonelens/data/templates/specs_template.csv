@@ -1,0 +1,3 @@
+phone_id,field,value,unit,source_id,verified_at,missing_reason,note
+apple-iphone-17-256,weight_g,,g,src-apple-cn-compare,,尚未核验,对照官网规格页逐项填写；官网未列出时 value 留空并填“官网未列出”
+xiaomi-17-256,battery_mah,,mAh,src-mi-17-specs,,尚未核验,注意记录厂商标注的“典型值/额定值”口径

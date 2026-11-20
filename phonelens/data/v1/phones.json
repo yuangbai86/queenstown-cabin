@@ -1,0 +1,134 @@
+[
+  {
+    "id": "demo-alpha",
+    "brand": "演示品牌甲",
+    "model": "Alpha",
+    "aliases": [
+      "alpha",
+      "阿尔法",
+      "甲 alpha"
+    ],
+    "region": "中国大陆版（演示）",
+    "storage": "256GB",
+    "ram": "8GB",
+    "sale_status": "demo",
+    "verified_at": null,
+    "data_kind": "demo",
+    "note": "虚构机型：轻薄小屏、带长焦。参数与评论均为演示夹具。"
+  },
+  {
+    "id": "demo-beta",
+    "brand": "演示品牌乙",
+    "model": "Beta",
+    "aliases": [
+      "beta",
+      "贝塔",
+      "乙 beta"
+    ],
+    "region": "中国大陆版（演示）",
+    "storage": "256GB",
+    "ram": "12GB",
+    "sale_status": "demo",
+    "verified_at": null,
+    "data_kind": "demo",
+    "note": "虚构机型：大电池、较重。参数与评论均为演示夹具。"
+  },
+  {
+    "id": "demo-gamma",
+    "brand": "演示品牌丙",
+    "model": "Gamma",
+    "aliases": [
+      "gamma",
+      "伽马"
+    ],
+    "region": "中国大陆版（演示）",
+    "storage": "256GB",
+    "ram": "12GB",
+    "sale_status": "demo",
+    "verified_at": null,
+    "data_kind": "demo",
+    "note": "虚构机型：只有参数、没有评论，用于演示“仅参数”状态。"
+  },
+  {
+    "id": "demo-delta",
+    "brand": "演示品牌甲",
+    "model": "Delta",
+    "aliases": [
+      "delta",
+      "德尔塔"
+    ],
+    "region": "中国大陆版（演示）",
+    "storage": "256GB",
+    "ram": null,
+    "sale_status": "demo",
+    "verified_at": null,
+    "data_kind": "demo",
+    "note": "虚构机型：只有少量旧评论、参数未核验，用于演示“仅评论”和旧样本状态。"
+  },
+  {
+    "id": "demo-epsilon",
+    "brand": "演示品牌乙",
+    "model": "Epsilon Pro",
+    "aliases": [
+      "epsilon",
+      "艾普西隆"
+    ],
+    "region": "中国大陆版（演示）",
+    "storage": "512GB",
+    "ram": "16GB",
+    "sale_status": "demo",
+    "verified_at": null,
+    "data_kind": "demo",
+    "note": "虚构机型：只有 512GB 版本、价格为建议零售价，用于演示存储与价格口径提示。"
+  },
+  {
+    "id": "apple-iphone-17-256",
+    "brand": "Apple",
+    "model": "iPhone 17",
+    "aliases": [
+      "iphone17",
+      "iphone 17",
+      "苹果17"
+    ],
+    "region": "中国大陆版",
+    "storage": "256GB",
+    "ram": null,
+    "sale_status": "unverified",
+    "verified_at": null,
+    "data_kind": "real",
+    "note": "候选机型，型号、在售状态与全部参数待人工核验。"
+  },
+  {
+    "id": "xiaomi-17-256",
+    "brand": "小米",
+    "model": "17",
+    "aliases": [
+      "xiaomi 17",
+      "mi 17",
+      "小米17"
+    ],
+    "region": "中国大陆版",
+    "storage": "256GB",
+    "ram": null,
+    "sale_status": "unverified",
+    "verified_at": null,
+    "data_kind": "real",
+    "note": "候选机型，在售状态、存储版本与全部参数待人工核验。"
+  },
+  {
+    "id": "vivo-x200-256",
+    "brand": "vivo",
+    "model": "X200",
+    "aliases": [
+      "vivo x200",
+      "x200"
+    ],
+    "region": "中国大陆版",
+    "storage": "256GB",
+    "ram": null,
+    "sale_status": "unverified",
+    "verified_at": null,
+    "data_kind": "real",
+    "note": "候选机型；规划稿记录官网曾显示缺货，在售状态待核验。"
+  }
+]

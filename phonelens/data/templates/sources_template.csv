@@ -1,0 +1,2 @@
+id,kind,name,url,access_method,allowed_storage,allowed_display,collected_at,verification,notes
+src-example,review_source,来源名称,https://,如何获取（人工整理/授权导出/接口）,允许保存的范围,full_text|excerpt|summary_only|none,YYYY-MM-DD,unverified|human_verified,使用条款与展示范围的确认记录

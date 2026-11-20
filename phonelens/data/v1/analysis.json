@@ -1,0 +1,1267 @@
+[
+  {
+    "review_id": "demo-a-001",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-001",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "拍照很好",
+        "explanation": "人工演示标注"
+      },
+      {
+        "review_id": "demo-a-001",
+        "dimension": "heat",
+        "sentiment": "neg",
+        "excerpt": "玩游戏容易热",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-002",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-002",
+        "dimension": "handling",
+        "sentiment": "pos",
+        "excerpt": "单手拿着很轻松",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-003",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-003",
+        "dimension": "battery",
+        "sentiment": "neg",
+        "excerpt": "续航一般，重度用一天要充两次电",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-004",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-004",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "长焦拍演唱会很清楚，夜景也比我上一台手机干净",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-005",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-005",
+        "dimension": "heat",
+        "sentiment": "neg",
+        "excerpt": "机身明显发烫",
+        "explanation": "人工演示标注"
+      },
+      {
+        "review_id": "demo-a-005",
+        "dimension": "smoothness",
+        "sentiment": "neg",
+        "excerpt": "画面偶尔掉帧",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-006",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-006",
+        "dimension": "smoothness",
+        "sentiment": "pos",
+        "excerpt": "切后台没有重新加载",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-007",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-007",
+        "dimension": "shopping",
+        "sentiment": "pos",
+        "excerpt": "快递第二天就到了，包装很严实",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-008",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-008",
+        "dimension": "battery",
+        "sentiment": "mixed",
+        "excerpt": "电池撑不到晚上，不过充电挺快",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-009",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-009",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "人像模式边缘处理自然，视频防抖也稳",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-010",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-010",
+        "dimension": "stability",
+        "sentiment": "neg",
+        "excerpt": "通知偶尔延迟",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-011",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-011",
+        "dimension": "handling",
+        "sentiment": "mixed",
+        "excerpt": "机身小巧，但边框有点硌手",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-012",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-012",
+        "dimension": "heat",
+        "sentiment": "neg",
+        "excerpt": "手机烫到自动降亮度",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-013",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-013",
+        "dimension": "stability",
+        "sentiment": "pos",
+        "excerpt": "没有闪退过，系统挺稳",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-014",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-014",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "拍照很好",
+        "explanation": "人工演示标注"
+      },
+      {
+        "review_id": "demo-a-014",
+        "dimension": "heat",
+        "sentiment": "neg",
+        "excerpt": "玩游戏容易热",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-015",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-015",
+        "dimension": "battery",
+        "sentiment": "neu",
+        "excerpt": "晚上回家还剩三成",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-016",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-016",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "拍照清晰",
+        "explanation": "人工演示标注"
+      },
+      {
+        "review_id": "demo-a-016",
+        "dimension": "battery",
+        "sentiment": "neg",
+        "excerpt": "电池小了点，出门得带充电宝",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-017",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-017",
+        "dimension": "smoothness",
+        "sentiment": "pos",
+        "excerpt": "帧率基本没波动",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-019",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-019",
+        "dimension": "handling",
+        "sentiment": "pos",
+        "excerpt": "女生单手握刚好",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-022",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-022",
+        "dimension": "camera",
+        "sentiment": "neg",
+        "excerpt": "暗光下人脸有点糊",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-023",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-023",
+        "dimension": "heat",
+        "sentiment": "neg",
+        "excerpt": "充电的时候会热，边充边玩更明显",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-024",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-024",
+        "dimension": "smoothness",
+        "sentiment": "pos",
+        "excerpt": "系统动画顺滑",
+        "explanation": "人工演示标注"
+      },
+      {
+        "review_id": "demo-a-024",
+        "dimension": "stability",
+        "sentiment": "neg",
+        "excerpt": "偶尔会自动重启一次",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-025",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-025",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "轻度使用一天半没问题",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-027",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-027",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "录孩子说话很清楚",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-028",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-028",
+        "dimension": "handling",
+        "sentiment": "pos",
+        "excerpt": "长时间躺着看手机手不酸",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-029",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-029",
+        "dimension": "heat",
+        "sentiment": "mixed",
+        "excerpt": "玩游戏有点热，但还在能接受的范围",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-030",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-030",
+        "dimension": "shopping",
+        "sentiment": "pos",
+        "excerpt": "客服态度很好",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-031",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-031",
+        "dimension": "smoothness",
+        "sentiment": "mixed",
+        "excerpt": "刚买时系统有卡顿，后来更新就好了",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-032",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-032",
+        "dimension": "battery",
+        "sentiment": "neg",
+        "excerpt": "待机一晚掉了百分之十",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-033",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-033",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "切换焦段不跳色",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-034",
+    "status": "needs_review",
+    "labels": [],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": null
+  },
+  {
+    "review_id": "demo-a-035",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-035",
+        "dimension": "heat",
+        "sentiment": "neu",
+        "excerpt": "微信视频通话时机身温热，不算烫",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-036",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-036",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "抓拍小猫基本不糊",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-037",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-a-037",
+        "dimension": "battery",
+        "sentiment": "neu",
+        "excerpt": "续航还行",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-a-038",
+    "status": "pending",
+    "labels": [],
+    "labeler": "none",
+    "prompt_version": null,
+    "reviewed_by": null
+  },
+  {
+    "review_id": "demo-b-001",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-001",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "重度使用一天还剩百分之四十",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-002",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-002",
+        "dimension": "handling",
+        "sentiment": "neg",
+        "excerpt": "躺着看久了手腕酸",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-003",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-003",
+        "dimension": "smoothness",
+        "sentiment": "pos",
+        "excerpt": "打游戏帧率稳",
+        "explanation": "人工演示标注"
+      },
+      {
+        "review_id": "demo-b-003",
+        "dimension": "heat",
+        "sentiment": "pos",
+        "excerpt": "开高画质一小时只是微温",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-004",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-004",
+        "dimension": "camera",
+        "sentiment": "mixed",
+        "excerpt": "拍照色彩偏艳，喜欢自然风格的可能不习惯",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-005",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-005",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "两天一充",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-006",
+    "status": "needs_review",
+    "labels": [],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": null
+  },
+  {
+    "review_id": "demo-b-007",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-007",
+        "dimension": "handling",
+        "sentiment": "neg",
+        "excerpt": "单手操作够不到屏幕顶部",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-008",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-008",
+        "dimension": "camera",
+        "sentiment": "mixed",
+        "excerpt": "夜景很亮，就是有时候涂抹感重",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-009",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-009",
+        "dimension": "stability",
+        "sentiment": "neg",
+        "excerpt": "蓝牙耳机偶尔断连",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-010",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-010",
+        "dimension": "smoothness",
+        "sentiment": "pos",
+        "excerpt": "应用打开速度快",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-011",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-011",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "二十分钟就充到八成",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-012",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-012",
+        "dimension": "shopping",
+        "sentiment": "neg",
+        "excerpt": "物流很慢",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-013",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-013",
+        "dimension": "heat",
+        "sentiment": "mixed",
+        "excerpt": "长时间录 4K 视频机身会热，但没有自动停止",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-014",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-014",
+        "dimension": "handling",
+        "sentiment": "mixed",
+        "excerpt": "手感扎实，握着很有质感，就是重",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-015",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-015",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "续航真的强",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-016",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-016",
+        "dimension": "camera",
+        "sentiment": "mixed",
+        "excerpt": "主摄拍白天风景很清楚，没有长焦，远处拍不清",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-017",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-017",
+        "dimension": "stability",
+        "sentiment": "pos",
+        "excerpt": "系统用了三个月没出过问题",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-018",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-018",
+        "dimension": "smoothness",
+        "sentiment": "neg",
+        "excerpt": "玩大型游戏偶尔掉帧",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-019",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-019",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "电池耐用",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-020",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-020",
+        "dimension": "handling",
+        "sentiment": "neg",
+        "excerpt": "太重了",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-021",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-021",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "拍人像肤色还原挺准",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-022",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-022",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "电池一天半，充电也快",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-025",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-025",
+        "dimension": "heat",
+        "sentiment": "neg",
+        "excerpt": "夏天充电时发热明显",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-026",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-026",
+        "dimension": "smoothness",
+        "sentiment": "mixed",
+        "excerpt": "切换应用偶尔会卡一下，不影响使用",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-027",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-027",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "重度使用一天还剩百分之四十",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-028",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-028",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "续航不错",
+        "explanation": "人工演示标注"
+      },
+      {
+        "review_id": "demo-b-028",
+        "dimension": "handling",
+        "sentiment": "neg",
+        "excerpt": "手机太沉了",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-029",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-029",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "视频防抖效果好，走路拍也稳",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-030",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-030",
+        "dimension": "stability",
+        "sentiment": "pos",
+        "excerpt": "没有漏消息",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-031",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-031",
+        "dimension": "battery",
+        "sentiment": "neg",
+        "excerpt": "半年后续航明显下降",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-032",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-032",
+        "dimension": "smoothness",
+        "sentiment": "pos",
+        "excerpt": "玩游戏视野好，不卡",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-033",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-033",
+        "dimension": "handling",
+        "sentiment": "mixed",
+        "excerpt": "厚了一点，但是握着稳",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-034",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-034",
+        "dimension": "camera",
+        "sentiment": "neg",
+        "excerpt": "拍照对焦慢，抓拍孩子经常糊",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-035",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-b-035",
+        "dimension": "battery",
+        "sentiment": "mixed",
+        "excerpt": "没有宣传的那么夸张",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-b-036",
+    "status": "pending",
+    "labels": [],
+    "labeler": "none",
+    "prompt_version": null,
+    "reviewed_by": null
+  },
+  {
+    "review_id": "demo-d-001",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-001",
+        "dimension": "battery",
+        "sentiment": "pos",
+        "excerpt": "一天一充足够",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-d-002",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-002",
+        "dimension": "camera",
+        "sentiment": "neg",
+        "excerpt": "拍照偏暗，夜景不行",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-d-003",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-003",
+        "dimension": "handling",
+        "sentiment": "pos",
+        "excerpt": "很轻薄，适合小手",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-d-004",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-004",
+        "dimension": "heat",
+        "sentiment": "neg",
+        "excerpt": "玩游戏发热严重",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-d-005",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-005",
+        "dimension": "stability",
+        "sentiment": "neg",
+        "excerpt": "系统偶尔卡死需要重启",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-d-006",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-006",
+        "dimension": "smoothness",
+        "sentiment": "pos",
+        "excerpt": "没有卡顿",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-d-007",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-007",
+        "dimension": "battery",
+        "sentiment": "neg",
+        "excerpt": "下午就要充",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-d-008",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-008",
+        "dimension": "shopping",
+        "sentiment": "mixed",
+        "excerpt": "包装破损，客服处理很快",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-d-009",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-009",
+        "dimension": "handling",
+        "sentiment": "pos",
+        "excerpt": "手感好，重量刚好",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  },
+  {
+    "review_id": "demo-d-010",
+    "status": "analyzed",
+    "labels": [
+      {
+        "review_id": "demo-d-010",
+        "dimension": "camera",
+        "sentiment": "pos",
+        "excerpt": "拍照清楚，色彩自然",
+        "explanation": "人工演示标注"
+      }
+    ],
+    "labeler": "manual_demo",
+    "prompt_version": null,
+    "reviewed_by": "开发者（演示）"
+  }
+]

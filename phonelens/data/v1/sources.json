@@ -1,0 +1,74 @@
+[
+  {
+    "id": "src-demo-spec",
+    "kind": "demo_fixture",
+    "name": "演示参数夹具（开发者编写）",
+    "url": null,
+    "access_method": "开发者手工编写，用于验证界面与规则",
+    "allowed_storage": "可保存于公开仓库",
+    "allowed_display": "full_text",
+    "collected_at": "2026-11-20",
+    "verification": "fixture",
+    "notes": "虚构机型的虚构参数，不对应任何真实产品。"
+  },
+  {
+    "id": "src-demo-price",
+    "kind": "demo_fixture",
+    "name": "演示价格夹具（开发者编写）",
+    "url": null,
+    "access_method": "开发者手工编写",
+    "allowed_storage": "可保存于公开仓库",
+    "allowed_display": "full_text",
+    "collected_at": "2026-11-20",
+    "verification": "fixture",
+    "notes": "虚构价格，仅用于验证价格口径规则。"
+  },
+  {
+    "id": "src-demo-reviews",
+    "kind": "demo_fixture",
+    "name": "演示评论夹具（开发者编写，非真实用户评论）",
+    "url": null,
+    "access_method": "开发者手工编写，覆盖多维度、褒贬混合、重复、机型混入、广告等测试情形",
+    "allowed_storage": "可保存于公开仓库",
+    "allowed_display": "full_text",
+    "collected_at": "2026-11-20",
+    "verification": "fixture",
+    "notes": "不是采集结果，不代表任何真实机型的口碑。"
+  },
+  {
+    "id": "src-apple-cn-compare",
+    "kind": "official_spec",
+    "name": "Apple 中国大陆官网 机型比较",
+    "url": "https://www.apple.com.cn/iphone/compare/",
+    "access_method": "人工核验（待进行）",
+    "allowed_storage": "仅保存结构化参数与来源链接",
+    "allowed_display": "summary_only",
+    "collected_at": null,
+    "verification": "unverified",
+    "notes": "2026-11-20 开发环境无法访问该域名，尚未核验任何字段。"
+  },
+  {
+    "id": "src-mi-17-specs",
+    "kind": "official_spec",
+    "name": "小米官网 小米 17 参数页",
+    "url": "https://www.mi.com/prod/xiaomi-17/specs",
+    "access_method": "人工核验（待进行）",
+    "allowed_storage": "仅保存结构化参数与来源链接",
+    "allowed_display": "summary_only",
+    "collected_at": null,
+    "verification": "unverified",
+    "notes": "2026-11-20 开发环境无法访问该域名，尚未核验任何字段。"
+  },
+  {
+    "id": "src-vivo-x200-param",
+    "kind": "official_spec",
+    "name": "vivo 官网 X200 参数页",
+    "url": "https://www.vivo.com.cn/vivo/param/x200",
+    "access_method": "人工核验（待进行）",
+    "allowed_storage": "仅保存结构化参数与来源链接",
+    "allowed_display": "summary_only",
+    "collected_at": null,
+    "verification": "unverified",
+    "notes": "规划稿记录该页曾显示缺货；参数页存在不能证明在售。2026-11-20 开发环境无法访问。"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "review_id": "demo-a-018",
+    "decision": "exclude",
+    "reason": "ad",
+    "note": "引流广告，无使用内容",
+    "reviewed_at": "2026-11-20"
+  },
+  {
+    "review_id": "demo-a-020",
+    "decision": "exclude",
+    "reason": "model_mismatch",
+    "note": "评论描述的是 Beta 演示机",
+    "reviewed_at": "2026-11-20"
+  },
+  {
+    "review_id": "demo-a-021",
+    "decision": "exclude",
+    "reason": "no_usage_content",
+    "note": "无具体使用内容",
+    "reviewed_at": "2026-11-20"
+  },
+  {
+    "review_id": "demo-a-026",
+    "decision": "exclude",
+    "reason": "near_duplicate",
+    "note": "与 demo-a-001 近似重复，人工确认排除",
+    "reviewed_at": "2026-11-20"
+  },
+  {
+    "review_id": "demo-b-023",
+    "decision": "exclude",
+    "reason": "model_mismatch",
+    "note": "评论描述的是 Alpha 演示机",
+    "reviewed_at": "2026-11-20"
+  },
+  {
+    "review_id": "demo-b-024",
+    "decision": "exclude",
+    "reason": "no_usage_content",
+    "note": "无具体使用内容",
+    "reviewed_at": "2026-11-20"
+  }
+]

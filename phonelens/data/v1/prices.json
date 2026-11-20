@@ -1,0 +1,54 @@
+[
+  {
+    "id": "price:demo-alpha:256",
+    "phone_id": "demo-alpha",
+    "storage": "256GB",
+    "amount": 5999,
+    "currency": "CNY",
+    "price_type": "official_current",
+    "channel": "演示官网",
+    "conditions": "不含以旧换新与平台补贴",
+    "recorded_at": "2026-11-18",
+    "source_id": "src-demo-price",
+    "data_kind": "demo"
+  },
+  {
+    "id": "price:demo-beta:256",
+    "phone_id": "demo-beta",
+    "storage": "256GB",
+    "amount": 4799,
+    "currency": "CNY",
+    "price_type": "official_current",
+    "channel": "演示官网",
+    "conditions": "不含以旧换新与平台补贴",
+    "recorded_at": "2026-11-18",
+    "source_id": "src-demo-price",
+    "data_kind": "demo"
+  },
+  {
+    "id": "price:demo-gamma:256",
+    "phone_id": "demo-gamma",
+    "storage": "256GB",
+    "amount": 3299,
+    "currency": "CNY",
+    "price_type": "official_msrp",
+    "channel": "演示官网（发布会建议零售价）",
+    "conditions": null,
+    "recorded_at": "2026-09-01",
+    "source_id": "src-demo-price",
+    "data_kind": "demo"
+  },
+  {
+    "id": "price:demo-epsilon:512",
+    "phone_id": "demo-epsilon",
+    "storage": "512GB",
+    "amount": 8999,
+    "currency": "CNY",
+    "price_type": "official_msrp",
+    "channel": "演示官网（建议零售价）",
+    "conditions": "未核验当前售价",
+    "recorded_at": "2026-10-15",
+    "source_id": "src-demo-price",
+    "data_kind": "demo"
+  }
+]
