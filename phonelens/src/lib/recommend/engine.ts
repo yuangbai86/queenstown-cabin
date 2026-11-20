@@ -64,9 +64,23 @@ interface ReviewSignal {
   claim: Claim;
 }
 
-export const REVIEW_STRONG = 0.15;
-export const REVIEW_WEAK = 0.08;
+/**
+ * 口碑信号的保守规则：
+ * - 只在两组样本可比（来源相同、数量足够、时间范围大体重叠、系统版本覆盖接近）时使用；
+ * - 对“正面占比”“负面占比”分别做双比例 z 检验，|z| ≥ 1.96 才视为差异明显，且两个方向不得互相矛盾；
+ * - 即使差异明显，口碑信号也只算“较弱”，不能单独让推荐变成“更值得考虑”。
+ * 这是对已收录样本的描述，不是对总体体验的估计。
+ */
 export const MIN_MENTIONS = 3;
+export const Z_THRESHOLD = 1.96;
+
+export function twoPropZ(x1: number, n1: number, x2: number, n2: number): number {
+  if (n1 === 0 || n2 === 0) return 0;
+  const p = (x1 + x2) / (n1 + n2);
+  const se = Math.sqrt(p * (1 - p) * (1 / n1 + 1 / n2));
+  if (se === 0) return 0;
+  return (x1 / n1 - x2 / n2) / se;
+}
 
 export function reviewSignal(input: EngineInput, dim: Dimension): ReviewSignal {
   const { stats, comparability, names } = input;
@@ -79,13 +93,6 @@ export function reviewSignal(input: EngineInput, dim: Dimension): ReviewSignal {
       claim: { text: `至少一款没有可用的评论样本，暂不依据${label}口碑判断。`, evidence: ev.filter((_, i) => input.hasReviews[i === 0 ? "a" : "b"]) },
     };
   }
-  if (!comparability.comparable) {
-    return {
-      side: "unknown",
-      strength: null,
-      claim: { text: `两款评论样本口径不同（${comparability.reasons[0]}），不依据${label}提及情况比较优劣。`, evidence: ev },
-    };
-  }
   const A = stats.a.dims[dim];
   const B = stats.b.dims[dim];
   const desc = (s: Side) => {
@@ -93,21 +100,35 @@ export function reviewSignal(input: EngineInput, dim: Dimension): ReviewSignal {
     return `${tag(s)} 有 ${d.pos} 条正面、${d.neg} 条负面、${d.mixed} 条褒贬混合（已分析 ${stats[s].n} 条）`;
   };
   const base = `已收录样本中提到${label}的评论：${desc("a")}；${desc("b")}。`;
-  if (A.mentions < MIN_MENTIONS && B.mentions < MIN_MENTIONS) {
-    return { side: "unknown", strength: null, claim: { text: `${base}提及太少，不足以判断。`, evidence: ev } };
+  if (!comparability.comparable) {
+    return {
+      side: "unknown",
+      strength: null,
+      claim: { text: `${base}两款评论样本口径不同（${comparability.reasons[0]}），不据此比较优劣。`, evidence: ev },
+    };
   }
-  const net = (s: Side) => (stats[s].dims[dim].pos - stats[s].dims[dim].neg) / stats[s].n;
-  const diff = net("a") - net("b");
-  const abs = Math.abs(diff);
-  if (abs < REVIEW_WEAK) {
-    return { side: "even", strength: null, claim: { text: `${base}两款的反馈分布接近。`, evidence: ev } };
+  if (A.mentions < MIN_MENTIONS || B.mentions < MIN_MENTIONS) {
+    return { side: "unknown", strength: null, claim: { text: `${base}至少一款提及少于 ${MIN_MENTIONS} 条，不足以判断。`, evidence: ev } };
   }
-  const winner: Side = diff > 0 ? "a" : "b";
+  const na = stats.a.n;
+  const nb = stats.b.n;
+  const zPos = twoPropZ(A.pos, na, B.pos, nb); // > 0：A 正面占比更高
+  const zNeg = twoPropZ(A.neg, na, B.neg, nb); // > 0：A 负面占比更高
+  const favorA = zPos >= Z_THRESHOLD || zNeg <= -Z_THRESHOLD;
+  const favorB = zPos <= -Z_THRESHOLD || zNeg >= Z_THRESHOLD;
+  if (favorA === favorB) {
+    return {
+      side: "even",
+      strength: null,
+      claim: { text: `${base}按当前样本量，两款的正负面占比差异不明显，不据此区分优劣。`, evidence: ev },
+    };
+  }
+  const winner: Side = favorA ? "a" : "b";
   return {
     side: winner,
-    strength: abs >= REVIEW_STRONG ? "strong" : "weak",
+    strength: "weak",
     claim: {
-      text: `${base}${tag(winner)}（${names[winner]}）的正面反馈相对更多。这只描述已收录样本，不代表购买者遇到问题的概率。`,
+      text: `${base}${tag(winner)}（${names[winner]}）的正面反馈占比相对较高，差异超出样本波动范围；但这只描述已收录样本，不能单独证明实际体验更好。`,
       evidence: ev,
     },
   };
@@ -238,7 +259,7 @@ function gamingVerdict(input: EngineInput): Verdict {
   else if (known.length === 2 && known[0].side !== known[1].side) side = "even";
   else {
     side = known[0].side;
-    strength = known.length === 2 && known.every((k) => k.strength === "strong") ? "strong" : "weak";
+    strength = "weak";
   }
   const claims: Claim[] = [s.claim, h.claim];
   if (chipClaim) claims.push(chipClaim);
@@ -286,32 +307,33 @@ function isSide(v: VerdictSide): v is Side {
   return v === "a" || v === "b";
 }
 
+/**
+ * 推荐状态：
+ * - 首要偏好证据不足 → 证据不足；
+ * - 首要偏好只有口碑信号（basis = reviews）时，最多给出“各有取舍”及倾向，不给“更值得考虑”；
+ * - 其次偏好方向相反（不论强弱）→ 各有取舍，保留首要偏好的倾向；
+ * - 首要偏好由已记录参数给出较明确差异，且其次不反对 → 更值得考虑。
+ */
 export function decideStatus(primary: Verdict | undefined, secondary: Verdict | undefined): { status: RecStatus; lean: Side | null } {
   if (!primary) return { status: "insufficient", lean: null };
   const P = primary.side;
   const S = secondary?.side;
-  if (P === "unknown") {
-    return { status: "insufficient", lean: S && isSide(S) ? S : null };
-  }
+  if (P === "unknown") return { status: "insufficient", lean: S && isSide(S) ? S : null };
   if (P === "even") {
-    if (S && isSide(S)) return secondary!.strength === "strong" ? { status: `prefer_${S}` as RecStatus, lean: S } : { status: "tradeoff", lean: S };
-    return { status: "tradeoff", lean: null };
+    if (S && isSide(S) && secondary!.strength === "strong" && secondary!.basis !== "reviews") return { status: `prefer_${S}` as RecStatus, lean: S };
+    return { status: "tradeoff", lean: S && isSide(S) ? S : null };
   }
-  // 首要偏好有方向
-  if (S && isSide(S) && S !== P) {
-    if (secondary!.strength === "strong" || primary.strength === "weak") return { status: "tradeoff", lean: P };
-    return { status: `prefer_${P}` as RecStatus, lean: P };
-  }
-  if (primary.strength === "strong") return { status: `prefer_${P}` as RecStatus, lean: P };
-  if (S && isSide(S) && S === P) return { status: `prefer_${P}` as RecStatus, lean: P };
-  return { status: "tradeoff", lean: P };
+  if (S && isSide(S) && S !== P) return { status: "tradeoff", lean: P };
+  const decisive = primary.strength === "strong" && primary.basis !== "reviews";
+  return decisive ? { status: `prefer_${P}` as RecStatus, lean: P } : { status: "tradeoff", lean: P };
 }
 
 function shortReason(v: Verdict, names: Record<Side, string>): string {
   const label = PREFERENCE_LABEL[v.pref];
   if (v.side === "unknown") return `「${label}」方面证据不足`;
   if (v.side === "even") return `「${label}」方面两款差异不明显`;
-  return `「${label}」方面 ${tag(v.side)}（${names[v.side]}）${v.strength === "strong" ? "有较明确的优势" : "略有优势"}`;
+  if (v.basis === "reviews") return `「${label}」方面已收录评论中 ${tag(v.side)}（${names[v.side]}）的正面反馈占比较高（仅供参考）`;
+  return `「${label}」方面 ${tag(v.side)}（${names[v.side]}）${v.strength === "strong" ? "有较明确的差异" : "略有差异"}`;
 }
 
 function verdictEvidence(v: Verdict): string[] {
@@ -421,7 +443,7 @@ export function recommend(input: EngineInput): Recommendation {
   } else if (status === "tradeoff") {
     summary.push({
       text: lean
-        ? `两款各有取舍；如果「${p1Label}」对你最重要，可以略偏向 ${tag(lean)}（${names[lean]}）。`
+        ? `两款各有取舍；如果「${p1Label}」对你最重要，可以略偏向 ${tag(lean)}（${names[lean]}）${p1 && p1.side === lean && p1.basis === "reviews" ? "，但依据只是已收录评论的倾向，不足以说明实际体验更好" : ""}。`
         : `在你关心的方面，两款差异不明显，各有取舍。`,
       evidence: p1 ? verdictEvidence(p1) : [],
     });

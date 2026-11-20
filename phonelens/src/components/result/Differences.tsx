@@ -19,7 +19,7 @@ function VerdictPill({ v }: { v: Verdict }) {
   if (v.side === "a" || v.side === "b")
     return (
       <span className={`verdict-pill ${v.side}`}>
-        <SideTag side={v.side} /> {v.strength === "strong" ? "较明确占优" : "略占优"}
+        <SideTag side={v.side} /> {v.basis === "reviews" ? "评论倾向（仅供参考）" : v.strength === "strong" ? "差异较明确" : "略有差异"}
       </span>
     );
   if (v.side === "even") return <span className="verdict-pill">＝ 差异不明显</span>;

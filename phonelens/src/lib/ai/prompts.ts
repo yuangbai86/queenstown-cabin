@@ -4,7 +4,7 @@
  */
 
 export const EXTRACT_PROMPT_VERSION = "extract-v1.0";
-export const RECOMMEND_PROMPT_VERSION = "recommend-v1.0";
+export const RECOMMEND_PROMPT_VERSION = "recommend-v1.1";
 
 export const EXTRACT_SYSTEM = `你是手机评论的维度标注员。你只做信息抽取，不做推荐。
 
@@ -36,8 +36,12 @@ export const RECOMMEND_SYSTEM = `你是手机选购说明的撰写者。你的�
 
 你只能使用输入 JSON 中的材料：
 - 不从记忆补充任何机型参数、价格、评论或测评；不自行计算比例或新的数字。
-- 文字中出现的每一个数字，都必须原样来自输入材料。
-- 每条理由和取舍必须附上 evidence（证据编号），编号只能从输入的 allowed_evidence 中选择；不确定就不要写这条。
+- 文字中出现的每一个数字，都必须来自输入材料 facts 中的一条事实，并在该句的 figures 中写出它的 id。
+  数字和单位与事实完全一致；句中要写明数字属于 A 还是 B，并紧挨着说明它是什么（例如“A 重 178 g”“B 有 7 条正面”）。
+  不要把一款的数字写到另一款上，不要换单位，不要把数量写成比例或概率。
+- 每条理由和取舍必须附上 evidence（证据编号），编号只能从输入的 allowed_evidence 中选择，并包含所引用事实的证据；不确定就不要写这条。
+- 评论正负面条数只描述已收录样本；baseline 中标为“较弱”的口碑倾向不能写成“体验更好”或作为唯一推荐理由。
+- questions 中不要出现数字。
 - 状态 status 只能等于 baseline.status，或比它更保守（prefer_a/prefer_b → tradeoff → insufficient）；不得翻转推荐方向。
 - 评论提及数量只描述已收录样本，不得写成“X% 的手机会……”或产品质量排名。
 - 芯片名称、RAM、像素、电池容量不能直接推出流畅度、成像或续航优劣。

@@ -18,7 +18,8 @@ import { DIMENSIONS } from "../types";
 import { cleanReviews, validateLabels, type CleanedReview } from "../clean";
 
 export const WINDOW_DAYS = 90;
-export const MIN_SAMPLE = 15; // 低于此数提示“样本过少”，降低推荐强度（可配置的产品规则）
+export const MIN_SAMPLE = 15;
+export const MIN_TIME_OVERLAP = 0.5; // 时间范围重叠至少占较短区间的一半 // 低于此数提示“样本过少”，降低推荐强度（可配置的产品规则）
 
 export interface DimStat {
   dimension: Dimension;
@@ -254,9 +255,17 @@ export function compareSamples(a: SampleStats, b: SampleStats): Comparability {
   const srcB = [...b.source_ids].sort().join(",");
   if (a.n > 0 && b.n > 0 && srcA !== srcB) reasons.push("两款评论来源不同");
   if (a.date_min && a.date_max && b.date_min && b.date_max) {
-    const overlap = a.date_min <= b.date_max && b.date_min <= a.date_max;
-    if (!overlap) reasons.push("两款评论的时间范围没有重叠");
+    const day = (d: string) => Date.parse(`${d}T00:00:00Z`) / 86_400_000;
+    const start = Math.max(day(a.date_min), day(b.date_min));
+    const end = Math.min(day(a.date_max), day(b.date_max));
+    const shorter = Math.min(day(a.date_max) - day(a.date_min), day(b.date_max) - day(b.date_min)) + 1;
+    const overlap = Math.max(0, end - start + 1);
+    if (overlap === 0) reasons.push("两款评论的时间范围没有重叠");
+    else if (overlap / shorter < MIN_TIME_OVERLAP) reasons.push("两款评论的时间范围重叠不足一半");
+  } else if (a.n > 0 && b.n > 0) {
+    reasons.push("至少一款评论缺少日期，无法确认时间范围");
   }
+  if (a.window !== b.window) reasons.push("两款使用了不同的样本筛选范围");
   const knownShare = (s: SampleStats) => (s.n ? s.sysver_known / s.n : 0);
   if (a.n > 0 && b.n > 0 && Math.abs(knownShare(a) - knownShare(b)) > 0.4) {
     reasons.push("两款已知系统版本的样本比例差异较大");

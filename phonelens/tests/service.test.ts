@@ -43,7 +43,7 @@ class FakeAdapter implements AiAdapter {
 function goodOutput(c: Comparison) {
   const pack = buildPack(c);
   const ev = pack.allowed_evidence.find((e) => e.includes("weight_g"))!;
-  return { status: c.recommendation.status, summary: [{ text: "两款各有取舍。", evidence: [ev] }], reasons: [{ text: "A 更轻。", evidence: [ev] }], tradeoffs: [], questions: [] };
+  return { status: c.recommendation.status, summary: [{ text: "两款各有取舍。", evidence: [ev], figures: [] }], reasons: [{ text: "A 更轻。", evidence: [ev], figures: [] }], tradeoffs: [], questions: [] };
 }
 
 class FailingStore implements CounterStore {
@@ -97,12 +97,13 @@ describe("配额、限流与失败回退", () => {
     const adapter = new FakeAdapter((_, req) => {
       const pack = JSON.parse(req.user.slice(req.user.indexOf("{")));
       const ev = pack.allowed_evidence[0];
-      return { status: pack.baseline.status, summary: [{ text: "说明。", evidence: [ev] }], reasons: [{ text: "理由。", evidence: [ev] }], tradeoffs: [], questions: [] };
+      return { status: pack.baseline.status, summary: [{ text: "说明。", evidence: [ev], figures: [] }], reasons: [{ text: "理由。", evidence: [ev], figures: [] }], tradeoffs: [], questions: [], lean: pack.baseline.lean };
     });
     await explain(c1, { config: cfg(), adapter, store });
     const r = await explain(c2, { config: cfg(), adapter, store });
     expect(adapter.calls).toBe(2);
-    expect(r.mode === "ai" && r.explanation.status).toBe("prefer_b");
+    expect(r.mode === "ai" && r.explanation.status).toBe("tradeoff");
+    expect(adapter.calls).toBe(2);
   });
 
   it("额度用完后不再发出请求，返回基础模式", async () => {
@@ -140,7 +141,7 @@ describe("配额、限流与失败回退", () => {
 
   it("首次输出引用全部非法时重试，仍不合格则回退基础模式", async () => {
     const c = comparison();
-    const adapter = new FakeAdapter(() => ({ status: "tradeoff", summary: [{ text: "x", evidence: ["fake:id"] }], reasons: [{ text: "y", evidence: ["fake:id"] }], tradeoffs: [], questions: [] }));
+    const adapter = new FakeAdapter(() => ({ status: "tradeoff", summary: [{ text: "x", evidence: ["fake:id"], figures: [] }], reasons: [{ text: "y", evidence: ["fake:id"], figures: [] }], tradeoffs: [], questions: [] }));
     const r = await explain(c, { config: cfg(), adapter, store });
     expect(adapter.calls).toBe(2);
     expect(r).toMatchObject({ mode: "baseline", reason: "invalid_output" });
